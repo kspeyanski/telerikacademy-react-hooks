@@ -1,17 +1,24 @@
 import React from 'react';
-// import { contrast } from '../../../../utils/contrast';
+import { useThemeBackground } from '../hooks/use-theme-background';
+import ThemeContext from '../theme-context';
 
-class ThemeChooser extends React.Component {
-    render() {
-        return (
-            <div style={{ backgroundColor: '#FF0000', padding: 8 }}>
-                <h2 >Theme: placeholder</h2>
-                <button>
-                    Change Theme
-                </button>
-            </div>
-        )
+const ThemeChooser = () => {
+    const backgroundColor = useThemeBackground('#FF0000');
+    const [theme, setTheme] = React.useContext(ThemeContext);
+
+    const handleClick = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light')
     }
+
+    return (
+        <div style={{ backgroundColor, padding: 8 }}>
+            <h2 >Theme: placeholder</h2>
+            <button onClick={handleClick}>
+                Change Theme
+            </button>
+        </div>
+    )
+
 }
 
 export default ThemeChooser;

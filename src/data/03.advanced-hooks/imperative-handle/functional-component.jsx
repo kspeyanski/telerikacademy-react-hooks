@@ -1,15 +1,17 @@
 import React from 'react';
 
-const FunctionalComponent = (props) => {
+const FunctionalComponent = React.forwardRef((props, ref) => {
     const element = React.useRef(null);
 
+    React.useImperativeHandle(ref, () => ({ element: element.current }));
+
     return (
-        <div ref={element} style={{ backgroundColor: 'lightgreen' }}>
+        <div style={{ backgroundColor: 'lightgreen' }}>
             Functional Component
             <br />
-            <input onChange={props.onChange} value={props.value} />
+            <input ref={element} onChange={props.onChange} value={props.value} tabIndex={-1} />
         </div>
     )
-}
+});
 
 export default FunctionalComponent;

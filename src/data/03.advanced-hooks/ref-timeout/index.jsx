@@ -2,11 +2,17 @@ import React from 'react';
 import { countries } from './countries';
 
 const Ref = () => {
+    const timeout = React.useRef();
     const [value, setValue] = React.useState('');
     const [end, setEnd] = React.useState();
     const [correct, setCorrect] = React.useState([]);
 
     const handleChange = (event) => {
+        clearTimeout(timeout.current);
+        timeout.current = setTimeout(() => {
+            setEnd(true);
+        }, 1000);
+
         setValue(event.target.value);
     }
 
@@ -21,7 +27,13 @@ const Ref = () => {
     }
 
     return (
-        <div style={{ display: 'flex', width: '100%', justifyContent: 'center', opacity: end ? 0.5 : 1 }}>
+        <div style={{ display: 'flex', width: '100%', justifyContent: 'center', opacity: end ? 0.5 : 1, position: 'relative' }}>
+            {end && (
+                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', backgroundColor: 'lightgray', padding: 16 }}>
+                    <h1>Game Over!</h1>
+                    <h2>Score: {correct.length}</h2>
+                </div>
+            )}
             <div>
                 <input
                     value={value}

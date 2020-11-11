@@ -1,11 +1,25 @@
 import React from 'react';
 
-// import { position } from '../../../utils/position';
-// import { align } from '../../../utils/align';
+import { align } from '../../../utils/align';
+import { position } from '../../../utils/position';
 
 const MovableBox = (props) => {
     const element = React.useRef();
     const [mount, setMount] = React.useState();
+
+    React.useEffect(
+        () => {
+            align(element.current)
+            setMount(true);
+        },
+        []
+    )
+
+    React.useEffect(() => {
+        if (props.anchor) {
+            position(element.current, props.anchor, element.current.offsetHeight)
+        }
+    })
 
     return (
         <div

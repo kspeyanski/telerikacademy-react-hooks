@@ -1,7 +1,7 @@
 import React from 'react';
 
-// import { position } from '../../../utils/position';
-// import { align } from '../../../utils/align';
+import { position } from '../../../utils/position';
+import { align } from '../../../utils/align';
 
 class MovableBox extends React.Component {
     element;
@@ -11,6 +11,17 @@ class MovableBox extends React.Component {
 
         this.state = {
             mount: false
+        }
+    }
+
+    componentDidMount() {
+        align(this.element);
+        this.setState({ mount: true })
+    }
+
+    componentDidUpdate() {
+        if (this.props.anchor) {
+            position(this.element, this.props.anchor);
         }
     }
 

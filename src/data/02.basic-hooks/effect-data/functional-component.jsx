@@ -1,8 +1,20 @@
 import React from 'react';
 import { fetchPage } from '../../../utils/fetch-page';
 
-const MovableBox = (props) => {
+const MovableBox = () => {
     const [data, setData] = React.useState([]);
+    const [page, setPage] = React.useState(1);
+
+    const fetchData = async (newPage) => {
+        const resp = await fetchPage(newPage);
+        setData(resp.data);
+    }
+
+    const handlePageChange = (event) => {
+        setPage(event.target.value)
+    }
+
+    React.useEffect(() => fetchData(page), [page])
 
     return (
         <div>
@@ -15,7 +27,9 @@ const MovableBox = (props) => {
                         </ul>
                     </div>
                 )
-                : (<h2>Loading Users</h2>)}
+                : (<h2>No Users</h2>)}
+            <input type={"number"} onChange={handlePageChange} value={page} />
+
         </div>
     )
 }

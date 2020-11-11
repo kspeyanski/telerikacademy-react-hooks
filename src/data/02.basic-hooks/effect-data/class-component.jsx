@@ -6,8 +6,26 @@ class DataComponent extends React.Component {
         super(props);
 
         this.state = {
-            data: []
+            data: [],
+            page: 1
         }
+    }
+
+    fetchData = async () => {
+        const resp = await fetchPage(this.state.page);
+        this.setState({ data: resp.data })
+    }
+
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    componentDidUpdate() {
+        this.fetchData();
+    }
+
+    handlePageChange = (event) => {
+        this.setState({ page: event.target.value })
     }
 
     render() {
@@ -18,11 +36,12 @@ class DataComponent extends React.Component {
                         <div>
                             <h2>Users:</h2>
                             <ul>
-                                {this.state.data.map((item) => <li>{item.title}</li>)}
+                                {this.state.data.map((user) => <li key={user.id}>{user.first_name}&nbsp;{user.last_name}</li>)}
                             </ul>
                         </div>
                     )
-                    : (<h2>Loading Users</h2>)}
+                    : (<h2>No users</h2>)}
+                <input type={"number"} onChange={this.handlePageChange} value={this.state.page} />
             </div>
         )
     }

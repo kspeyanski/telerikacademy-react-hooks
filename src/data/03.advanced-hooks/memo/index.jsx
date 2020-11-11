@@ -6,11 +6,15 @@ import Main from './components/main';
 
 import ThemeContext from './theme-context';
 
+import { useForceUpdate } from '../../../utils';
+
 const App = () => {
     const [theme, setTheme] = React.useState('light');
+    const forceUpdate = useForceUpdate();
 
     return (
         <ThemeContext.Provider value={[theme, setTheme]}>
+            <button onClick={() => forceUpdate()}>Force Update</button>
             <div style={{ backgroundColor: '#000000', padding: 16 }}>
                 <Navbar />
                 <Main />

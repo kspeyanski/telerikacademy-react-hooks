@@ -1,8 +1,10 @@
 import React from 'react';
-// import { contrast } from '../../../../utils/contrast';
+import { useThemeBackground } from '../hooks/use-theme-background';
 
 const Navbar = () => {
-    return (<nav style={{ backgroundColor: '#FF8800' }}>navigation</nav>)
+    const backgroundColor = useThemeBackground('#FF8800');
+
+    return (<nav style={{ backgroundColor }}>navigation</nav>)
 }
 
 export default Navbar

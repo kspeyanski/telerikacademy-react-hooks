@@ -4,11 +4,14 @@ import Article from './article';
 import Sidenav from './sidenav';
 import TableOfContents from './table-of-contents';
 
-// import { contrast } from '../../../../utils/contrast';
+import { useThemeBackground } from '../hooks/use-theme-background';
+
 
 const Main = () => {
+    const backgroundColor = useThemeBackground('#FF00FF');
+
     return (
-        <div style={{ display: 'flex', backgroundColor: '#FF00FF', padding: 16 }}>
+        <div style={{ display: 'flex', backgroundColor, padding: 16 }}>
             <Sidenav />
             <Article />
             <TableOfContents />

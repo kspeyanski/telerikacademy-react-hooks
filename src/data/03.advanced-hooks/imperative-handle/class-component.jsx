@@ -5,10 +5,10 @@ class ClassComponent extends React.Component {
 
     render() {
         return (
-            <div ref={el => this.element = el} style={{ backgroundColor: 'lightpink' }}>
+            <div style={{ backgroundColor: 'lightpink' }}>
                 Class Component
                 <br />
-                <input onChange={this.props.onChange} value={this.props.value} />
+                <input onChange={this.props.onChange} value={this.props.value} ref={el => this.element = el} tabIndex={-1} />
             </div>
         )
     }

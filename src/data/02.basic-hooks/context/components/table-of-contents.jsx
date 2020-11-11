@@ -1,10 +1,12 @@
 import React from 'react';
-// import { contrast } from '../../../../utils/contrast';
 import ThemeChooser from './theme-chooser';
+import { useThemeBackground } from '../hooks/use-theme-background';
 
 const TableOfContents = () => {
+    const backgroundColor = useThemeBackground('#00FF00');
+
     return (
-        <div style={{ backgroundColor: '#00FF00', padding: 16 }}>
+        <div style={{ backgroundColor, padding: 16 }}>
             <ThemeChooser />
             <ul>
                 <li>Lorem.</li>

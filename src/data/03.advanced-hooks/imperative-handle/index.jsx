@@ -8,15 +8,20 @@ const ImperativeHandle = () => {
     const functionalRef = React.useRef(null);
 
     const handleOnClassFocusClick = () => {
-        // TODO;
+        if (classRef.current) {
+            classRef.current.element.focus();
+        }
     }
 
     const handleOnFunctionalFocusClick = () => {
-        // TODO;
+        if (functionalRef.current) {
+            functionalRef.current.element.focus();
+        }
     }
 
     React.useEffect(() => {
-        // TODO;
+        console.log({ 'classRef': classRef.current });
+        console.log({ 'functionalRef': functionalRef.current });
     })
 
     return (

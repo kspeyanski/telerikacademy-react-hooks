@@ -5,12 +5,5 @@ import { contrast } from '../../../../utils/contrast';
 export const useThemeBackground = (color) => {
     const [theme] = React.useContext(ThemeContext);
 
-    const backgroundColor = React.useMemo(
-        () => contrast(color, theme === 'dark' ? -0.2 : 0.2),
-        [color, theme]
-    )
-
-    React.useDebugValue(backgroundColor);
-
-    return backgroundColor
+    return contrast(color, theme === 'dark' ? -0.2 : 0.2)
 }

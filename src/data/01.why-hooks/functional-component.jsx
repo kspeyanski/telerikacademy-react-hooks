@@ -58,35 +58,35 @@ const StudentList = () => {
 
 // 2.
 
-class ThemeSource {
-    listeners = [];
+// class ThemeSource {
+//     listeners = [];
 
-    getTheme = () => {
-        return 'material'
-    }
+//     getTheme = () => {
+//         return 'material'
+//     }
 
-    addChangeListener = (callback) => {
-        this.listeners.push(callback);
-    }
-    removeChangeListener = (callback) => {
-        this.listeners.filter((l) => l !== callback);
-    }
-}
+//     addChangeListener = (callback) => {
+//         this.listeners.push(callback);
+//     }
+//     removeChangeListener = (callback) => {
+//         this.listeners.filter((l) => l !== callback);
+//     }
+// }
 
-const themeSource = new ThemeSource();
+// const themeSource = new ThemeSource();
 
-const useTheme = () => {
-    const [theme, setTheme] = React.useState(themeSource.getTheme());
+// const useTheme = () => {
+//     const [theme, setTheme] = React.useState(themeSource.getTheme());
 
-    const handleChange = React.useCallback((newTheme) => {
-        setTheme(newTheme);
-    }, [])
+//     const handleChange = React.useCallback((newTheme) => {
+//         setTheme(newTheme);
+//     }, [])
 
-    React.useEffect(() => {
-        dataSource.addChangeListener(handleChange);
+//     React.useEffect(() => {
+//         dataSource.addChangeListener(handleChange);
 
-        return dataSource.removeChangeListener(handleChange);
-    }, [handleChange])
-}
+//         return dataSource.removeChangeListener(handleChange);
+//     }, [handleChange])
+// }
 
 export default StudentList;

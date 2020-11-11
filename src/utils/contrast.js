@@ -1,4 +1,5 @@
 export const contrast = (colorCode, amount) => {
+    console.log('calculate contrast');
     var usePound = false;
 
     if (colorCode[0] === "#") {

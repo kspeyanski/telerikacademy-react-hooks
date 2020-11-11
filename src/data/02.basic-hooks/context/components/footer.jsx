@@ -1,7 +1,10 @@
 import React from 'react';
-// import { contrast } from '../../../../utils/contrast';
+import { useThemeBackground } from '../hooks/use-theme-background';
+
 const Footer = () => {
-    return (<div style={{backgroundColor: '#FFFF00'}}>footer</div>)
+    const backgroundColor = useThemeBackground('#FFFF00');
+
+    return (<div style={{ backgroundColor }}>footer</div>)
 }
 
 export default Footer

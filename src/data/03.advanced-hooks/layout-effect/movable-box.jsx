@@ -2,13 +2,21 @@ import React from 'react';
 
 import { position } from '../../../utils/position';
 import { align } from '../../../utils/align';
-// import { findBeforeItem } from '../../../utils/find-before-item';
-// import { calculateOffset } from '../../../utils/calculate-offset';
-// import { BoxesContext } from './index';
+import { findBeforeItem } from '../../../utils/find-before-item';
+import { calculateOffset } from '../../../utils/calculate-offset';
+import { BoxesContext } from './index';
 
 const MovableBox = (props) => {
     const element = React.useRef();
+    const target = React.useRef();
+    const boxes = React.useContext(BoxesContext);
     const [mount, setMount] = React.useState();
+
+    React.useImperativeHandle(target, () => ({ element: element.current, props }))
+
+    React.useLayoutEffect(() => {
+        boxes.current.set(props.id, target.current);
+    })
 
     React.useEffect(() => {
         align(element.current);
@@ -18,7 +26,9 @@ const MovableBox = (props) => {
 
     React.useEffect(() => {
         if (props.anchor) {
-            position(element.current, props.anchor)
+            const beforeMe = findBeforeItem(boxes.current, target.current)
+            const offset = calculateOffset(beforeMe);
+            position(element.current, props.anchor, offset)
         }
     })
 
