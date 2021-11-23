@@ -1,11 +1,12 @@
+export const DEFAULT_COUNT = 0;
 export const counterReducer = (state, action) => {
     switch (action.type) {
         case 'increment':
-            return state + 1;
+            return state + action.step;
         case 'decrement':
-            return state - 1;
+            return state - action.step;
         case 'reset':
-            return 0;
+            return DEFAULT_COUNT;
         default:
             return state;
     }

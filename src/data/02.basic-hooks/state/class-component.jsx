@@ -13,13 +13,13 @@ class Counter extends React.Component {
     }
 
     handleDecrement = () => {
-        this.setState({ count: this.state.count - 1 });
+        this.setState({ count: this.state.count - 1 })
     }
 
     render() {
         return (
             <div>
-                Current value: {this.state.count}
+                Current value: {this.state.count} <br />
                 <button onClick={this.handleIncrement}>Increment (+)</button>
                 <button onClick={this.handleDecrement}>Decrement (-)</button>
             </div >

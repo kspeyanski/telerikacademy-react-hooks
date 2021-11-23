@@ -1,9 +1,12 @@
 import React from 'react';
 // import { contrast } from '../../../../utils/contrast';
+import { useBackgroundColor } from '../hooks/use-background-color';
 
 const Sidenav = () => {
+    const backgroundColor = useBackgroundColor('#0000FF');
+
     return (
-        <section style={{backgroundColor: '#0000FF'}}>
+        <section style={{backgroundColor: backgroundColor}}>
             <ul>
                 <li>Lorem, ipsum.</li>
                 <li>Quae, sit?</li>

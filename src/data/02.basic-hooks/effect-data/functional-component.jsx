@@ -2,16 +2,28 @@ import React from 'react';
 import { fetchPage } from '../../../utils/fetch-page';
 
 const MovableBox = (props) => {
-    const [data, setData] = React.useState([]);
+    const [data, setData] = React.useState(null)
+    const [page, setPage] = React.useState(1);
 
-    return (
+    const fetchData = async (wantedPage) => {
+        const result = await fetchPage(wantedPage);
+        setData(result.data);
+    }
+    // Fira Code font
+    // feature: font ligatures
+    React.useEffect(() => {
+        fetchData(page)
+    }, [page])
+
+    return  (
         <div>
-            {data.length
+            <input value={page} type="number" onChange={(event) => { setPage(event.target.value)}}/>
+            {data?.length
                 ? (
                     <div>
                         <h2>Users:</h2>
                         <ul>
-                            {data.map((user) => <li>{user.first_name}&nbsp;{user.last_name}</li>)}
+                            {data.map((item) => <li key={item.id}>{item.first_name}</li>)}
                         </ul>
                     </div>
                 )

@@ -8,11 +8,13 @@ const ImperativeHandle = () => {
     const functionalRef = React.useRef(null);
 
     const handleOnClassFocusClick = () => {
-        // TODO;
+        classRef.current.element.focus()
     }
 
     const handleOnFunctionalFocusClick = () => {
-        // TODO;
+        if(!functionalRef.current.props.disabled) {
+            functionalRef.current.element.focus()
+        }
     }
 
     React.useEffect(() => {
@@ -27,7 +29,7 @@ const ImperativeHandle = () => {
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                 <ClassComponent ref={classRef} />
-                <FunctionalComponent ref={functionalRef} />
+                <FunctionalComponent ref={functionalRef} disabled={true} />
             </div>
         </div>
     )

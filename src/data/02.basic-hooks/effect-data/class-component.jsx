@@ -10,6 +10,15 @@ class DataComponent extends React.Component {
         }
     }
 
+    fetchData = async () => {
+        const response = await fetchPage(1);
+        this.setState({ data: response.data })
+    }
+
+    componentDidMount() {
+        this.fetchData();
+    }
+
     render() {
         return (
             <div>
@@ -18,7 +27,7 @@ class DataComponent extends React.Component {
                         <div>
                             <h2>Users:</h2>
                             <ul>
-                                {this.state.data.map((item) => <li>{item.title}</li>)}
+                                {this.state.data.map((item) => <li key={item.id}>{item.first_name}</li>)}
                             </ul>
                         </div>
                     )

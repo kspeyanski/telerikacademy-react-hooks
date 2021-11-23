@@ -19,8 +19,12 @@ const LayoutEffect = () => {
         setSelected(ref.current);
     }
 
+    const registerBox = (box) => {
+        boxes.current.set(box.id, box);
+    }
+
     return (
-        <BoxesContext.Provider value={boxes}>
+        <BoxesContext.Provider value={[boxes, registerBox]}>
             <div style={{ position: 'relative', height: 400, background: 'lightgray' }}>
                 <button ref={tl} className="top left" onClick={handleClick.bind(undefined, tl, 'top left')}>Align to Me</button>
                 <button ref={tr} className="top right" onClick={handleClick.bind(undefined, tr, 'top right')}>Align to Me</button>

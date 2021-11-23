@@ -1,7 +1,8 @@
 import React from 'react';
-// import { contrast } from '../../../../utils/contrast';
-const Footer = () => {
-    return (<div style={{backgroundColor: '#FFFF00'}}>footer</div>)
-}
+import { useBackgroundColor } from '../hooks/use-background-color';
 
-export default Footer
+const Footer = () => {
+    const backgroundColor = useBackgroundColor('#FFFF00');
+    return (<div style={{backgroundColor}}>footer</div>);
+}
+export default Footer;

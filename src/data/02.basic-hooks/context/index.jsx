@@ -12,7 +12,7 @@ const App = () => {
     return (
         <ThemeContext.Provider value={[theme, setTheme]}>
             <div style={{ backgroundColor: '#000000', padding: 16 }}>
-                <Navbar />
+                <Navbar  />
                 <Main />
                 <Footer />
             </div>

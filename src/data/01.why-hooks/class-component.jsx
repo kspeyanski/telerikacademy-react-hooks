@@ -26,7 +26,35 @@ class Student extends React.Component {
     render() {
         return (
             <div>
-                <h2>name: {this.props.student.name}<br /><span>nickname: {this.props.student.nickname}</span></h2>
+                <h2>name: {this.props.student.name}<br />
+                    <span>nickname: {this.props.student.nickname}</span>
+                </h2>
+            </div>
+        )
+    }
+}
+
+class Users extends React.Component {
+    render() {
+        return (
+            <div>
+                <h2>name: {this.props.user.name}<br /><span>nickname: {this.props.user.nickname}</span></h2>
+            </div>
+        )
+    }
+}
+
+class UsersList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.students.map((student) => (
+                    <Users student={student} key={student.id} />
+                ))}
             </div>
         )
     }

@@ -10,5 +10,7 @@ export const useThemeBackground = (color) => {
         [color, theme]
     )
 
+    React.useDebugValue(backgroundColor);
+
     return backgroundColor
 }
